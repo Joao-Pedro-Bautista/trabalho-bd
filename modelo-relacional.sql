@@ -5,7 +5,9 @@ use trabalho_bd;
 create table funcionario (
 	cpf int primary key,
     nome varchar(80),
-    endereco varchar(80)
+    endereco varchar(80),
+    cpf_gerente int,
+    foreign key(cpf_gerente) references funcionario(cpf)
 );
 
 create table gerente (
@@ -61,7 +63,11 @@ create table pedido (
     emissao datetime,
     valor int,
     cnpj int,
-    foreign key(cnpj) references empresa_compradora(cnpj)
+    cpf_motorista int,
+    id_frota int,
+    foreign key(cnpj) references empresa_compradora(cnpj),
+	foreign key(cpf_motorista) references motorista(cpf),
+    foreign key(id_frota) references frota(id)
 );
 
 create table maquina (
