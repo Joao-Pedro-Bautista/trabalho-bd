@@ -32,10 +32,10 @@ create table motorista (
     foreign key (cpf) references funcionario (cpf)
 );
 
-create table frota(
-	id int primary key,
-    caminho_realizado varchar(80),
-    peso_carga int
+create table caminhao(
+	placa varchar(80) primary key,
+    capacidade_caminhao int,
+    tamanho_caminhao varchar(80)
 );
 
 create table vendedor (
@@ -63,11 +63,7 @@ create table pedido (
     emissao datetime,
     valor int,
     cnpj int,
-    cpf_motorista int,
-    id_frota int,
-    foreign key(cnpj) references empresa_compradora(cnpj),
-	foreign key(cpf_motorista) references motorista(cpf),
-    foreign key(id_frota) references frota(id)
+    foreign key(cnpj) references empresa_compradora(cnpj)
 );
 
 create table maquina (
@@ -82,10 +78,14 @@ create table peca (
     nome varchar(80)
 );
 
-/* create table gerencia(
-
+create table entrega(
+	id_pedido int primary key,
+    placa_caminhao varchar(80),
+    cpf_motorista int,
+    foreign key(id_pedido) references pedido(id),
+	foreign key(placa_caminhao) references frota(placa),
+    foreign key(cpf_motorista) references motorista(cpf)
 );
-*/
 
 create table reparo(
 	cpf int,
