@@ -7,7 +7,7 @@ create table funcionario (
     nome varchar(80),
     endereco varchar(80),
     cpf_gerente int,
-    foreign key(cpf_gerente) references funcionario(cpf)
+    foreign key(cpf_gerente) references gerente(cpf)
 );
 
 create table gerente (
@@ -32,7 +32,7 @@ create table motorista (
     foreign key (cpf) references funcionario (cpf)
 );
 
-create table caminhao(
+create table frota(
 	placa varchar(80) primary key,
     capacidade_caminhao int,
     tamanho_caminhao varchar(80)
